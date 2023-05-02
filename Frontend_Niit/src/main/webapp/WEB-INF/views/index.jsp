@@ -8,8 +8,9 @@
 
 <spring:url var="css" value="/rs/css" />
 <spring:url var="js" value="/rs/js" />
+<spring:url var="images" value="/rs/images" />
 
-
+<c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 
 
 <!DOCTYPE html>
@@ -24,10 +25,19 @@
 <meta name="author" content="Debabrato Ghosh">
 <!-- Bootstrap core CSS -->
 <link href="${css}/bootstrap.min.css" rel="stylesheet">
+
+<!-- Datatables  CSS -->
+<link href="${css}/jquery.dataTables.css" rel="stylesheet">
+<link href="${css}/dataTables.bootstrap.css" rel="stylesheet">
+
 <!-- Custom styles for this template -->
 <link href="${css}/myStyle.css" rel="stylesheet">
 
-<title>${title}</title>
+<script>
+	window.menu = '${title}';
+	window.contextRoot = '${contextRoot}';
+</script>
+
 
 </head>
 
@@ -50,6 +60,21 @@
 		<c:if test="${userclickcontactus == true}">
 			<%@include file="contactus.jsp"%>
 		</c:if>
+		
+		<c:if test="${userclickallactiveproduct == true}">
+			<%@include file="product.jsp"%>
+		</c:if>
+		<c:if test="${userclickcategoryproduct == true}">
+			<%@include file="product.jsp"%>
+		</c:if>
+		
+		<c:if test="${userclicksingleproduct == true}">
+			<%@include file="singleproduct.jsp"%>
+		</c:if>
+		
+		<c:if test="${userclickmanageproduct == true}">
+			<%@include file="manageproduct.jsp"%>
+		</c:if>
 
 		<!-- Footer -->
 		<%@ include file="./shared/footer.jsp"%>
@@ -60,6 +85,13 @@
 
 	<!-- Bootstrap core JavaScript -->
 	<script src="${js}/bootstrap.min.js"></script>
+	
+	<!-- Datatables JavaScript -->
+	<script src="${js}/jquery.dataTables.js"></script>
+	<script src="${js}/dataTables.bootstrap.js"></script>
+	
+	<!-- DCustom JavaScript -->
+	<script src="${js}/myscript.js"></script>
 </body>
 
 </html>

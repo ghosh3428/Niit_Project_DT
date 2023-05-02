@@ -15,13 +15,13 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(basePackages={"c   "})
+@ComponentScan(basePackages={"com.niit.Backend_Niit.model"})
 public class HibernateConfig {
 
-	private String DATABASE_URL = "jdbc:h2:tcp://localhost/~/niit";
+	private String DATABASE_URL = "jdbc:h2:tcp://localhost/~/test";
 	private String DATABASE_DRIVER = "org.h2.Driver";
 	private String DATABASE_DIALECT = "org.hibernate.dialect.H2Dialect";
-	private String DATABASE_USERNAME = "student";
+	private String DATABASE_USERNAME = "sa";
 	private String DATABASE_PASSWORD = "";
 
 	@Bean
@@ -61,7 +61,7 @@ public class HibernateConfig {
 		LocalSessionFactoryBuilder builder = new LocalSessionFactoryBuilder(dataSource);
 
 		builder.addProperties(getHibernateProperties());
-		builder.scanPackages("com.niit.Backend_Niit.modal");
+		builder.scanPackages("com.niit.Backend_Niit.model");
 
 		return builder.buildSessionFactory();
 

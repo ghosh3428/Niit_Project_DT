@@ -1,12 +1,18 @@
 package com.niit.Frontend_Niit.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.Backend_Niit.DAO.CategoryDAO;
+
 @Controller
 public class FrontController 
 {
+	@Autowired
+	CategoryDAO categoryDAO;
+	
 	
 	@RequestMapping(value={"/index","/home","/"})
 	public ModelAndView index()
@@ -16,7 +22,7 @@ public class FrontController
 		mv.addObject("title","ONLINE SHOPPING - INDEX");
 		mv.addObject("welcome","Hello User!!! Welcome to ONLINE SHOPPING HOME PAGE");
 		mv.addObject("userclickhome" , true);
-		
+		mv.addObject("categorylist" , categoryDAO.activeCategoryList());
 		return mv;
 	}
 	

@@ -12,8 +12,10 @@
 
 
 	<context:component-scan
-		base-package="com.niit.Frontend_Niit.controller" />
+		base-package="com.niit.Frontend_Niit" />
 
+	<context:component-scan
+		base-package="com.niit.Backend_Niit" />
 	<mvc:annotation-driven />
 	
 	<mvc:resources location="/assets/" mapping="/rs/**/" />
